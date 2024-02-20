@@ -38,7 +38,7 @@ def invalid_ways_to_attend_class(total_ways, no_of_days_absent):
 def graduation_miss_probability(days, consecutive_absences_limit):
     """
     This method will calculate the probability of graduation miss
-    Input : no.of days example:- 5, consecutive_absences_limit-Example 4
+    Input: no.of days example:- 5, consecutive_absences_limit-Example 4
     """
 
     if days < 0 or consecutive_absences_limit < 0 or days < consecutive_absences_limit:
@@ -47,9 +47,9 @@ def graduation_miss_probability(days, consecutive_absences_limit):
     all_ways = all_ways_to_attend_class(days)
     ineligible_ways = invalid_ways_to_attend_class(all_ways, consecutive_absences_limit)
 
-    remaining_ways = [way for way in all_ways if way not in ineligible_ways]
-    graduation_miss_days = len([sequence for sequence in remaining_ways if sequence[-1] == 'A'])
-    count_of_valid_ways = str(len(all_ways) - len(ineligible_ways))
+    valid_ways = [way for way in all_ways if way not in ineligible_ways]
+    graduation_miss_days = len([sequence for sequence in valid_ways if sequence[-1] == 'A'])
+    count_of_valid_ways = str(len(valid_ways))
 
     return f"{str(graduation_miss_days)}/{count_of_valid_ways}"
 
